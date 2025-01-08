@@ -1,0 +1,11 @@
+/* Internal Team used styles*/
+
+.cert-logos img {height:100px;width:100px;margin:10px;}/*In footer.jsp page added style for certificate provided images*/
+.dropdownfile-head{display: flex;justify-content: space-between;}/* In header-login.jsp page add for dropdown*/
+.numberfile{padding: 0 0 0 14px;}
+.logout1{padding-right: 6px !important;cursor:pointer;}
+.announcement{margin: -9px 0px;}/* In header-login.jsp page add for announcement*/
+.announcement span {color:#003B6A; font-size:16px;}
+.announcement a {color:#B31942;}
+.unsubscribe-success-message {color: #003B6A;font-weight: bold;text-align: center;}/* In unsubscribe.jsp page add for message*/
+.unsubscribe-error-message {color: #B31942 !important;font-weight: bold;text-align: center;}

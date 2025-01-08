@@ -1,0 +1,72 @@
+name: cta-ui
+on:
+ workflow_dispatch:
+ push:
+   branches:
+   - cta-ui
+jobs:
+  deploy:
+    name: Deploy to Google storage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          version: 'latest'
+          project_id: ${{ secrets.cta-harbour }}
+          service_account_key: ${{ secrets.DEVOPS_GCP_SECRET_KEY }}
+
+      - name: Upload css
+        run: gsutil cp -r css gs://cta-ui/
+
+      - name: Upload fonts
+        run: gsutil cp -r fonts gs://cta-ui/
+
+      - name: Upload images
+        run: gsutil cp -r images gs://cta-ui/
+
+      - name: Upload inc
+        run: gsutil cp -r inc gs://cta-ui/
+
+      - name: Upload js
+        run: gsutil cp -r js gs://cta-ui/
+
+      - name: Upload scss
+        run: gsutil cp -r scss gs://cta-ui/
+
+      - name: Upload vendor
+        run: gsutil cp -r vendor gs://cta-ui/
+
+      - name: Upload index.html
+        run: gsutil cp index.html gs://cta-ui/
+
+      - name: Upload 404.html
+        run: gsutil cp 404.html gs://cta-ui/
+
+      - name: Upload aboutus.html
+        run: gsutil cp aboutus.html gs://cta-ui/
+
+      - name: Upload blog.html
+        run: gsutil cp blog.html gs://cta-ui/
+
+      - name: Upload blogdetails.html
+        run: gsutil cp blogdetails.html gs://cta-ui/
+
+      - name: Upload contactus.html
+        run: gsutil cp contactus.html gs://cta-ui/
+
+      - name: Upload faq.html
+        run: gsutil cp faq.html gs://cta-ui/
+
+      - name: Upload pricing.html
+        run: gsutil cp pricing.html gs://cta-ui/
+
+      - name: Upload stepform.html
+        run: gsutil cp stepform.html gs://cta-ui/
+
+      - name: Change Permissions
+        run: gsutil -m setmeta -h "Cache-Control:public, max-age=60" gs://cta-ui/**
